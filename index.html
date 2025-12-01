@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cat café.com.br</title>
+</head>
+<body>
+
+<header>
+    <div class="cabeca">
+        <fieldset></fieldset>
+        <img src="Imagens/Logo.png" alt="Logo" class="imagem-Logo">
+        <fieldset></fieldset>
+    </div>
+</header>
+
+<main>
+    <br><br>
+    <div class="lado0">
+        <div class="texto0">
+            <h2>Nome do cliente:</h2>
+            <input type="text" id="nome" placeholder="(Ex: Ana, Isabelli, Lorenzo)">
+            <h2>Quantidade de pedidos:</h2>
+            <input type="text" id="quantidade" min="1" placeholder="⚠Coloque no minímo 1⚠">
+        </div>          
+    </div>
+
+    <h1 class="subtitulo-centralizado1">Combos prontos:</h1>
+
+    <!-- Combos 1 e 2 -->
+    <div class="lado">
+        <div class="texto">
+            <h2>Combo simples 🥯:</h2>
+            <p>
+                Donut Açúcar e canela.<br>
+                Café comum.<br>
+                Xícara 100ml.<br>
+                Adicionais: açúcar cristal.<br>
+                <h1>R$ 17.00</h1>
+            </p>
+            <input type="checkbox" name="Combos simples" id="Combos_simples" value="17.00">
+            <button onclick="adicionarAoCarrinho('Combo Simples', 'Donut + Café comum', 17)">Adicionar ao carrinho</button>
+        </div>
+
+        <div class="texto">
+            <h2>Combo Vane 🍫:</h2>
+            <p>
+                Donut Red velvet.<br>
+                Café instantâneo.<br>
+                Copo 440ml.<br>
+                Adicionais: Chocolate amargo + Açúcar cristal + Calda de chocolate.<br>
+                <h1>R$ 50.00</h1>
+            </p>
+            <input type="checkbox" name="Combos vane" id="Combos_vane" value="50.00">
+            <button onclick="adicionarAoCarrinho('Combo Vane', 'Donut Red Velvet + Café instantâneo', 50)">Adicionar ao carrinho</button>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Combos 3 e 4 -->
+    <div class="lado1">
+        <div class="texto1">
+            <h2>Combo Ray 🍓:</h2>
+            <p>
+                Donut Kinder bueno.<br>
+                Capuccino.<br>
+                Copo 300ml.<br>
+                Adicionais: Calda de morango + Leite integral.<br>
+                <h1>R$ 40.00</h1>
+            </p>
+            <input type="checkbox" name="Combos Ray" id="Combos_ray" value="40.00">
+            <button onclick="adicionarAoCarrinho('Combo Ray', 'Donut Kinder Bueno + Capuccino', 40)">Adicionar ao carrinho</button>
+        </div>
+
+        <div class="texto">
+            <h2>Combo Eckhardt 🥮:</h2>
+            <p>
+                Donut Cheesecake de frutas vermelhas.<br>
+                Café Mocha.<br>
+                Xícara 325ml.<br>
+                Adicionais: Chocolate ao leite.<br>
+                <h1>R$ 40.00</h1>
+            </p>
+            <input type="checkbox" name="Combos Eckhardt" id="Combos_eckhardt" value="40.00">
+            <button onclick="adicionarAoCarrinho('Combo Eckhardt', 'Donut Cheesecake + Café Mocha', 40)">Adicionar ao carrinho</button>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Combos 5 e 6 -->
+    <div class="lado1">
+        <div class="texto1">
+            <h2>Combo Pistache 🌰:</h2>
+            <p>
+                Donut de Pistache.<br>
+                Chá Verde.<br>
+                Copo 300ml.<br>
+                Adicionais: Chocolate de pistache + Calda de pistache + Leite integral.<br>
+                <h1>R$ 40.00</h1>
+            </p>
+             <input type="checkbox" name="Combos Pistache" id="Combos_pistache" value="40.00">
+            <button onclick="adicionarAoCarrinho('Combo Pistache', 'Donut Pistache + Chá verde', 40)">Adicionar ao carrinho</button>
+        </div>
+
+        <div class="texto2">
+            <h2>Combo Fagundes 🥧:</h2>
+            <p>
+                Donut creme de avelã.<br>
+                Café expresso.<br>
+                Xícara 250ml.<br>
+                Adicionais: Calda de chocolate.<br>
+                <h1>R$ 35.00</h1>
+            </p>
+            <input type="checkbox" name="Combos Fagundes" id="Combos_fagundes" value="35.00">
+            <button onclick="adicionarAoCarrinho('Combo Fagundes', 'Donut creme de avelã + Café expresso', 35)">Adicionar ao carrinho</button>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Carrinho de Compras -->
+    <h1 class="subtitulo-centralizado">Carrinho </h1>
+    <table id="tabelaCarrinho">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Detalhes</th>
+                <th>Qtd.</th>
+                <th>Subtotal (R$)</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="corpoCarrinho"></tbody>
+    </table>
+    <h2>Total: R$ <span id="totalCarrinho">0.00</span></h2>
+    <br>
+    <button class="btn-limpar" onclick="limparCarrinho()">Limpar Carrinho</button>
+    <br><br><br>
+
+    <!-- Café -->
+    <h1 class="subtitulo-centralizado">Monte seu pedido logo abaixo:</h1> 
+    <div class="container">
+        <div class="caixa item-1">
+            <h2>Selecione seu café:</h2>
+            <select id="Cafe"></select>
+            <h2>Temperatura desejada:</h2>
+            <select id="temperatura"></select>
+        </div>
+
+        <div class="caixa item-2">
+            <h2>Tamanho copos:</h2>
+            <select id="Copos_cafe"></select>
+            <h2>Tamanho xícara:</h2>
+            <select id="Xicaras_cafe"></select>
+        </div>
+
+        <div class="caixa item-3">
+            <h2>Opcionais:</h2>
+            <label>Deseja açúcar em sua bebida:</label>
+            <select id="acucar_cafe"></select><br>
+            <label>Deseja chocolate em sua bebida:</label>
+            <select id="Chocolate_cafe"></select><br>
+            <label>Deseja calda em sua bebida:</label>
+            <select id="caldas_cafe"></select><br>
+            <label>Deseja leite em sua bebida:</label>
+            <select id="leites_cafe"></select><br>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Chá -->
+    <div class="container">
+        <div class="caixa item-4">
+            <h2>Selecione seu chá:</h2>
+            <select id="Chas"></select>
+            <h2>Temperatura desejada:</h2>
+            <select id="temperatura_cha"></select>
+        </div>
+
+        <div class="caixa item-5">
+            <h2>Tamanho copos:</h2>
+            <select id="Copos_cha"></select>
+            <h2>Tamanho xícara:</h2>
+            <select id="Xicaras_cha"></select>
+        </div>
+
+        <div class="caixa item-6">
+            <h2>Opcionais:</h2>
+            <label>Deseja açúcar em sua bebida:</label>
+            <select id="acucar_cha"></select><br>
+            <label>Deseja chocolate em sua bebida:</label>
+            <select id="Chocolate_cha"></select><br>
+            <label>Deseja calda em sua bebida:</label>
+            <select id="caldas_cha"></select><br>
+            <label>Deseja leite em sua bebida:</label>
+            <select id="leites_cha"></select><br>
+        </div>
+    </div>
+
+    <!-- Comidas doces e salgadas -->
+    <h1 class="subtitulo-centralizado2">Comidas doces e salgadas:</h1>
+    <div class="container">
+        <div class="caixa item-7">
+            <h2>Escolha se você gostaria de alguma comida salgada:</h2>
+            <select id="donuts_S"></select>
+        </div>
+
+        <div class="caixa item-8">
+            <h2>Escolha se você gostaria de alguma comida doce:</h2>
+            <select id="donuts_D"></select>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- Observações -->
+    <form>
+        <h1 class="subtitulo-centralizado3">Observações:</h1>
+        <p style="text-align: center;">Se tiver alguma observação sobre sua bebida ou comida nos diga!</p>
+        <input id="observacoes" type="text" placeholder="(Ex: alergias, restrições, etc...)">
+        <br><br>
+        <button onclick="limparCarrinho()">Limpar pedido</button>
+        <br><br><br>
+
+        <!-- Forma de pagamento -->
+        <div class="container">
+            <div class="caixaa">
+                <h1>Forma de pagamento:</h1>
+                <label><input type="radio" name="forma_pagamento" value="Pix">Pix</label>
+                <label><input type="radio" name="forma_pagamento" value="Cartão de crédito">Cartão de crédito</label>
+                <label><input type="radio" name="forma_pagamento" value="Cartão de débito">Cartão de débito</label>
+                <label><input type="radio" name="forma_pagamento" value="Dinheiro físico">Dinheiro físico</label>
+                <label><input type="radio" name="forma_pagamento" value="Vale refeição">Vale refeição</label>
+                <br><br>
+            </div>
+        </div>
+
+        <br><br>
+        <button type="button" onclick="gerarRelatorio()">Terminar pedido</button><br>
+    </form>
+
+    <div id="relatorio"></div>
+    <br>
+    <button onclick="window.print()">Gerar PDF do Relatório</button>
+
+</main>
+
+<footer>
+    <div class="pé">
+        <div class="info-rodape">
+            <h5 class="linha-info">Telefone: 45 7325-8983</h5>
+            <h5 class="linha-info">Email para contato: catclientes@gmail.com</h5>
+            <h5 class="linha-info">Endereço: Av. Alecrim Dourado do campo, 280<br>Foz do Iguaçu-PR, CEP 96543-002</h5>
+        </div>
+        <p class="direitos">© 2025 | Todos os direitos reservados.</p>
+        <img src="Imagens/Final.png" alt="Logo rodapé" class="imagem-Final">
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
