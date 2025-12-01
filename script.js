@@ -381,7 +381,7 @@ function gerarRelatorio() {
 
   const CafeId = document.getElementById("Cafe").value;
   const ChasId = document.getElementById("Chas").value;
-  const comboId = document.getElementById("combos").value;
+  const combosId = document.getElementById("combos").value;
   const temperaturaId = document.getElementById("temperatura").value; 
   const temperatura_cha_Id = document.getElementById("temperatura_cha").value;
 
@@ -418,7 +418,7 @@ function gerarRelatorio() {
   // Busca segura (evita erro se escolher "Nenhum")
   const Cafe1          = procurarPorId(Cafe, CafeId) || { nome: "Nenhum", preco: 0 }; // esse || { nome: "Nenhum", preco: 0 }; é baiscamente isso: "Tenta buscar o café. Se não encontrar (ou for null), usa esse objeto falso com nome 'Nenhum' e preço 0"
   const Chas1          = procurarPorId(Chas, ChasId) || { nome: "Nenhum", preco: 0 };
-  const combos         =  procurarPorId(combos, combosId) || { nome: "Nenhum", preco: 0 };
+  const combos         =  procurarPorId(combos,combosId) || { nome: "Nenhum", preco: 0 };
   const temperatura1   = procurarPorId(temperatura, temperaturaId) || { nome: "", preco: 0 };
   const temperatura_cha_2 = procurarPorId(temperatura_cha, temperatura_cha_Id) || { nome: "", preco: 0 };
 
@@ -481,6 +481,7 @@ function gerarRelatorio() {
 
     <br>
     <h3><strong>combos:</h3>
+    <p><strong>combo pedido:</strong> ${combos.nome} - R$ ${(combos.preco * quantidade).toFixed(2)}</p>
 
   
   `;
